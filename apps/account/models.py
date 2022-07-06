@@ -1,4 +1,3 @@
-import email
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 
@@ -15,12 +14,12 @@ class UserManager(BaseUserManager):
 
     def create_user(self,email,password, **extra_fields):
         extra_fields.setdefault('is_staff', False)
-        return self._create_user(email,password, **extra_fields)
+        return self._create_user(password, email, **extra_fields)
 
     def create_superuser(self,email, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_active', True)
-        return self._create(email,password, **extra_fields)
+        return self._create_user(password, email, **extra_fields)
 
 
 class CustomUser(AbstractBaseUser):

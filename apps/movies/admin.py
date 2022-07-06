@@ -15,7 +15,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'year', 'genre', 'country', 'image', )
     prepopulated_fields = {'slug': ('title', )}
     inlines = [InlineMovieImage, ]
-    list_filter = ('genre', 'country', )
+    list_filter = ('genre', 'country', 'year', )
 
     def image(self, obj):
         img = obj.image.first()

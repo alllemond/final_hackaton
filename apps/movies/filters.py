@@ -7,4 +7,12 @@ class MovieGenreCountryFilter(FilterSet):
 
     class Meta:
         model = Movie
-        fields = ('genre',)
+        fields = ('genre', )
+
+
+
+class MovieYearFilter(FilterSet):
+
+    class Meta:
+        model = Movie
+        fields = ('year', )

@@ -27,7 +27,7 @@ urlpatterns = [
    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
    path('admin/', admin.site.urls),
    path('account/', include('apps.account.urls')),
-   path('films/', include('apps.movies.urls')),
+   path('movies/', include('apps.movies.urls')),
    path('genres/', include('apps.genres.urls')),
    path('comment/', include('apps.comment.urls')),
    path('rating/', include('apps.rating.urls')),

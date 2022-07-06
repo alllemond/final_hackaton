@@ -1,8 +1,9 @@
 
+from email.policy import default
 from django.db import models
 from django.contrib.auth import get_user_model
 from slugify import slugify
-from apps.genres.models import Genre  
+from apps.genres .models import Genre  
 
 User = get_user_model()
 
@@ -15,10 +16,10 @@ class Movie(models.Model):
     year = models.CharField(max_length=100)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name='film_genre', null=True)
     country = models.CharField(max_length=100)
-    image = models.ImageField(blank=True, null=True, upload_to='Images')
+    image = models.ImageField(blank=True, null=True, upload_to='Images', default='photo_net.jpg')
 
 
-    def __str__(self):
+    def __str__(self)-> str:
         return f'{self.title} in {self.year}'
 
     def save(self,*args, **kwargs):
@@ -42,7 +43,7 @@ class MovieImage(models.Model):
 class Favorites(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='favorites')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorites')
-    favorite = models.BooleanField(default=False)
+    is_favorite = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.like)
